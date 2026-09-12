@@ -1,4 +1,4 @@
-package com.ibqy.hutool.aop;
+package com.xb.hutool.aop;
 
 import cn.hutool.aop.ProxyUtil;
 import cn.hutool.aop.aspects.SimpleAspect;

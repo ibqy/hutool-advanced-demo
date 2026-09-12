@@ -1,4 +1,4 @@
-package com.ibqy.hutool.cron;
+package com.xb.hutool.cron;
 
 import cn.hutool.cron.CronUtil;
 import cn.hutool.cron.task.Task;

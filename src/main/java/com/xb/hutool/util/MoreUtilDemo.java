@@ -1,4 +1,4 @@
-package com.ibqy.hutool.util;
+package com.xb.hutool.util;
 
 import cn.hutool.core.util.*;
 import cn.hutool.core.date.*;

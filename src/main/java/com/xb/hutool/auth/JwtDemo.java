@@ -1,4 +1,4 @@
-package com.ibqy.hutool.auth;
+package com.xb.hutool.auth;
 
 import cn.hutool.jwt.JWT;
 import cn.hutool.jwt.JWTUtil;

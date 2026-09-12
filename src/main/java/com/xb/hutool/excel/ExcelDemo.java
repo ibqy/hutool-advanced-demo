@@ -1,4 +1,4 @@
-package com.ibqy.hutool.excel;
+package com.xb.hutool.excel;
 
 import cn.hutool.poi.excel.ExcelUtil;
 import cn.hutool.poi.excel.ExcelWriter;

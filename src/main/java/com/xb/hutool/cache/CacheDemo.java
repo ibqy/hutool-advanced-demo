@@ -1,4 +1,4 @@
-package com.ibqy.hutool.cache;
+package com.xb.hutool.cache;
 
 import cn.hutool.cache.CacheUtil;
 import cn.hutool.cache.impl.TimedCache;

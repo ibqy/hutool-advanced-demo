@@ -1,4 +1,4 @@
-package com.ibqy.hutool.tree;
+package com.xb.hutool.tree;
 
 import cn.hutool.core.lang.tree.Tree;
 import cn.hutool.core.lang.tree.TreeUtil;

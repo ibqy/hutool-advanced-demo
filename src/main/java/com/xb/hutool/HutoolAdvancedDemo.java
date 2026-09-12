@@ -1,14 +1,14 @@
-package com.ibqy.hutool;
+package com.xb.hutool;
 
-import com.ibqy.hutool.http.*;
-import com.ibqy.hutool.config.*;
-import com.ibqy.hutool.cache.*;
-import com.ibqy.hutool.cron.*;
-import com.ibqy.hutool.auth.*;
-import com.ibqy.hutool.aop.*;
-import com.ibqy.hutool.tree.*;
-import com.ibqy.hutool.excel.*;
-import com.ibqy.hutool.util.*;
+import com.xb.hutool.http.*;
+import com.xb.hutool.config.*;
+import com.xb.hutool.cache.*;
+import com.xb.hutool.cron.*;
+import com.xb.hutool.auth.*;
+import com.xb.hutool.aop.*;
+import com.xb.hutool.tree.*;
+import com.xb.hutool.excel.*;
+import com.xb.hutool.util.*;
 
 /**
  * Hutool 高级用法综合演示入口

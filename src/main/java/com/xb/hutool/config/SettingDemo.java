@@ -1,4 +1,4 @@
-package com.ibqy.hutool.config;
+package com.xb.hutool.config;
 
 import cn.hutool.setting.Setting;
 import cn.hutool.core.io.FileUtil;

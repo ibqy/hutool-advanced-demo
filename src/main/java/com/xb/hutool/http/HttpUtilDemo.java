@@ -1,4 +1,4 @@
-package com.ibqy.hutool.http;
+package com.xb.hutool.http;
 
 import cn.hutool.http.*;
 import cn.hutool.core.io.FileUtil;

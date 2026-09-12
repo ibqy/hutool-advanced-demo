@@ -4,7 +4,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Java-17-2266EE?style=flat-square" alt="Java 17">
+  <img src="https://img.shields.io/badge/Java-21-2266EE?style=flat-square" alt="Java 21">
   <img src="https://img.shields.io/badge/Hutool-5.8.34-2266EE?style=flat-square" alt="Hutool 5.8.34">
   <img src="https://img.shields.io/github/license/ibqy/hutool-advanced-demo?style=flat-square" alt="License">
   <img src="https://img.shields.io/github/stars/ibqy/hutool-advanced-demo?style=flat-square" alt="Stars">
@@ -53,10 +53,10 @@ cd hutool-advanced-demo
 mvn compile
 
 # 运行全部 Demo
-mvn exec:java -Dexec.mainClass="com.ibqy.hutool.HutoolAdvancedDemo"
+mvn exec:java -Dexec.mainClass="com.xb.hutool.HutoolAdvancedDemo"
 ```
 
-> 或直接运行 `src/main/java/com/ibqy/hutool/HutoolAdvancedDemo.java` 中的 main 方法。
+> 或直接运行 `src/main/java/com/xb/hutool/HutoolAdvancedDemo.java` 中的 main 方法。
 
 <br>
 

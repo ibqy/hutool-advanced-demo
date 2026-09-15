@@ -1,2 +1,5 @@
 cn.hutool:hutool-all:5.8.34
-junit:junit:4.13.2
+junit:junit:4.13.2node_modules
+
+docs/.vitepress/cache
+docs/.vitepress/dist

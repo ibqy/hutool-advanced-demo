@@ -3,7 +3,7 @@ layout: home
 
 hero:
   name: Hutool 高级用法
-  text: 9 大模块生产场景示例
+  text: 13 大模块生产场景示例
   tagline: 不只背 API：HTTP 客户端、缓存策略、Cron 定时、JWT 鉴权、AOP 代理、Excel 操作、树结构——每个示例对应真实生产场景，零外部依赖直接跑
   actions:
     - theme: brand

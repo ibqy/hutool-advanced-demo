@@ -1,6 +1,6 @@
 <p align="center">
   <strong style="font-size: 28px;">📚 Hutool Advanced Demo</strong><br>
-  <span style="color: #656D76;">Hutool 工具库高级用法示例集 · 覆盖 10+ 生产场景</span>
+  <span style="color: #656D76;">Hutool 工具库高级用法示例集 · 覆盖 14+ 生产场景</span>
 </p>
 
 <p align="center">
@@ -49,11 +49,15 @@ mvn exec:java -Dexec.mainClass="com.xb.hutool.HutoolAdvancedDemo"
 |------|--------|------|
 | 🌐 HTTP | `http/HttpUtilDemo.java` | [HTTP 客户端实战](docs/01-http-client.md) |
 | 💾 缓存 | `cache/CacheDemo.java` | [缓存策略对比](docs/02-cache-strategy.md) |
+| 🛡️ 缓存防护 | `cache/CacheAdvancedDemo.java` | 穿透/击穿/雪崩三重防护 |
 | ⏰ 定时 | `cron/CronDemo.java` | [定时任务深入](docs/03-cron-deep-dive.md) |
 | 🔐 JWT | `auth/JwtDemo.java` | [JWT 鉴权实战](docs/04-jwt-guide.md) |
+| 🔄 JWT 刷新 | `auth/JwtRefreshDemo.java` | 双 Token + 黑名单 + 轮换机制 |
+| 🔑 加解密 | `crypto/CryptoDemo.java` | RSA 非对称加密 + 数字签名 |
 | 🎯 AOP | `aop/AopDemo.java` | [AOP 代理与切面](docs/05-aop-proxy.md) |
 | 📊 Excel | `excel/ExcelDemo.java` | [Excel 操作指南](docs/06-excel-ops.md) |
 | 🌿 树结构 | `tree/TreeDemo.java` | [树结构工具](docs/07-tree-builder.md) |
+| ✅ 数据校验 | `validation/ValidatorDemo.java` | 链式校验器 + 正则规则 |
 | ⚙️ 配置 | `config/SettingDemo.java` | 分组配置、自动加载、持久化 |
 | 🔧 更多 | `util/MoreUtilDemo.java` | 加密、脱敏、ID 生成、类型转换 |
 
@@ -83,11 +87,15 @@ mvn exec:java -Dexec.mainClass="com.xb.hutool.HutoolAdvancedDemo"
 |------|------|
 | HTTP 客户端 | GET/POST、文件上传、代理配置 |
 | 缓存策略 | TimedCache 过期、FIFO/LRU 淘汰 |
+| 缓存防护 | 穿透（空值缓存）、击穿（互斥锁）、雪崩（TTL 抖动） |
 | 定时任务 | CronUtil 动态添加/移除任务 |
 | JWT 鉴权 | 生成/解析/验签、HS256 签名、过期验证 |
+| JWT 刷新机制 | 双 Token（access + refresh）、黑名单、Token 轮换 |
+| RSA 加解密 | 非对称加密（公钥加密/私钥解密）、数字签名与验签 |
 | AOP 代理 | JDK 动态代理、CGLIB 代理 |
 | Excel 操作 | 写入（带样式）、读取、大数据流式处理 |
 | 树结构 | TreeUtil 构建、节点查找、排序 |
+| 数据校验 | 链式校验器、手机号/邮箱/身份证/中文名正则校验 |
 | 加密解密 | MD5、AES、Base64 |
 | 数据脱敏 | 手机号、邮箱、密码脱敏 |
 | ID 生成 | UUID、NanoId |
@@ -99,6 +107,8 @@ mvn exec:java -Dexec.mainClass="com.xb.hutool.HutoolAdvancedDemo"
 |------|---------|-------------|
 | 缓存持久化 | 仅内存缓存 | 集成 Redis/Caffeine |
 | JWT 密钥管理 | 硬编码密钥 | 使用 KMS 或配置文件 |
+| JWT 黑名单 | ConcurrentHashMap | 集成 Redis SET + TTL |
+| RSA 密钥管理 | 运行时生成 | 持久化到密钥管理系统 |
 | 定时任务 | 单机 Cron | 分布式任务调度（XXL-Job） |
 | Excel | 小文件处理 | 大数据量用 SXSSFWorkbook |
 | 异常处理 | 简化输出 | 统一异常处理 + 日志记录 |
@@ -106,10 +116,9 @@ mvn exec:java -Dexec.mainClass="com.xb.hutool.HutoolAdvancedDemo"
 ### ❌ 未实现
 
 - HTTP 连接池配置
-- 缓存击穿/雪崩防护
-- JWT 刷新 Token 机制
 - Excel 模板导出
 - 分布式锁/限流
+- 响应式/异步缓存加载
 
 <br>
 
@@ -120,10 +129,14 @@ mvn exec:java -Dexec.mainClass="com.xb.hutool.HutoolAdvancedDemo"
 | 测试类 | 测试数 | 覆盖内容 |
 |--------|--------|---------|
 | `CacheDemoTest` | 4 | TimedCache 过期、FIFO 淘汰、手动清理、更新 |
+| `CacheAdvancedDemoTest` | 4 | 穿透防护、击穿防护、雪崩防护（TTL 抖动） |
 | `JwtDemoTest` | 6 | 生成解析、验签、HS256、过期验证 |
+| `JwtRefreshDemoTest` | 7 | 双 Token 生成、刷新、轮换、黑名单 |
+| `CryptoDemoTest` | 8 | RSA 密钥对生成、加解密、数字签名与验签 |
+| `ValidatorDemoTest` | 7 | 手机号/邮箱/身份证/中文名校验、链式校验器 |
 | `TreeDemoTest` | 5 | 构建、查找、多层级、空树、排序 |
 | `UtilDemoTest` | 12 | UUID、MD5、AES、脱敏、转换、Base64 |
-| **合计** | **27** | **全部通过** |
+| **合计** | **53** | **全部通过** |
 
 ```bash
 # 运行测试

@@ -50,7 +50,7 @@ public class MoreUtilDemo {
         System.out.println("  Convert → int=" + num + " str=" + str + " date=" + date);
 
         // 5. Map 工具
-        Map<String, Object> map = MapUtil.builder("name", "ibqy")
+        Map<String, Object> map = MapUtil.<String, Object>builder("name", "ibqy")
             .put("age", 25)
             .put("lang", new String[]{"Java", "Python"})
             .build();

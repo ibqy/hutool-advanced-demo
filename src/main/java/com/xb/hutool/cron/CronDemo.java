@@ -21,7 +21,7 @@ public class CronDemo {
 
         // 2. 带 ID 的任务
         CronUtil.schedule("job2", "*/2 * * * * ?", (Task) () ->
-            System.out.println("  🔔 job2 (2s) → " + DateUtil.timeToSecond(System.currentTimeMillis())));
+            System.out.println("  🔔 job2 (2s) → " + DateUtil.now()));
 
         // 3. 启动（非守护）
         CronUtil.setMatchSecond(true);

@@ -75,6 +75,65 @@ mvn exec:java -Dexec.mainClass="com.xb.hutool.HutoolAdvancedDemo"
 
 ---
 
+## 实现边界
+
+### ✅ 已实现
+
+| 功能 | 说明 |
+|------|------|
+| HTTP 客户端 | GET/POST、文件上传、代理配置 |
+| 缓存策略 | TimedCache 过期、FIFO/LRU 淘汰 |
+| 定时任务 | CronUtil 动态添加/移除任务 |
+| JWT 鉴权 | 生成/解析/验签、HS256 签名、过期验证 |
+| AOP 代理 | JDK 动态代理、CGLIB 代理 |
+| Excel 操作 | 写入（带样式）、读取、大数据流式处理 |
+| 树结构 | TreeUtil 构建、节点查找、排序 |
+| 加密解密 | MD5、AES、Base64 |
+| 数据脱敏 | 手机号、邮箱、密码脱敏 |
+| ID 生成 | UUID、NanoId |
+| 类型转换 | Convert 工具、Map 工具 |
+
+### 🎓 教学简化
+
+| 场景 | 简化内容 | 生产环境建议 |
+|------|---------|-------------|
+| 缓存持久化 | 仅内存缓存 | 集成 Redis/Caffeine |
+| JWT 密钥管理 | 硬编码密钥 | 使用 KMS 或配置文件 |
+| 定时任务 | 单机 Cron | 分布式任务调度（XXL-Job） |
+| Excel | 小文件处理 | 大数据量用 SXSSFWorkbook |
+| 异常处理 | 简化输出 | 统一异常处理 + 日志记录 |
+
+### ❌ 未实现
+
+- HTTP 连接池配置
+- 缓存击穿/雪崩防护
+- JWT 刷新 Token 机制
+- Excel 模板导出
+- 分布式锁/限流
+
+<br>
+
+---
+
+## 测试覆盖
+
+| 测试类 | 测试数 | 覆盖内容 |
+|--------|--------|---------|
+| `CacheDemoTest` | 4 | TimedCache 过期、FIFO 淘汰、手动清理、更新 |
+| `JwtDemoTest` | 6 | 生成解析、验签、HS256、过期验证 |
+| `TreeDemoTest` | 5 | 构建、查找、多层级、空树、排序 |
+| `UtilDemoTest` | 12 | UUID、MD5、AES、脱敏、转换、Base64 |
+| **合计** | **27** | **全部通过** |
+
+```bash
+# 运行测试
+mvn test
+```
+
+<br>
+
+---
+
 ## 相关链接
 
 - [Hutool 官方文档](https://hutool.cn/docs)

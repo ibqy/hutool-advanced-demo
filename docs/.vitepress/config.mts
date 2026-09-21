@@ -3,7 +3,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   lang: 'zh-CN',
   title: 'Hutool 高级用法',
-  description: '9 大模块生产场景示例：HTTP、缓存、Cron、JWT、AOP、Excel、树结构',
+  description: '13 大模块生产场景示例：HTTP、缓存、Cron、JWT、AOP、Excel、树结构',
   base: '/hutool-advanced-demo/',
   lastUpdated: true,
   markdown: {

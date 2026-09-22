@@ -27,6 +27,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class JwtRefreshDemo {
 
+    // WARNING: 教学演示用，生产环境密钥必须从环境变量或配置中心读取，绝不能硬编码！
     private static final String ACCESS_KEY = "access-secret-2026";
     private static final String REFRESH_KEY = "refresh-secret-2026";
 

@@ -14,6 +14,7 @@ import java.util.*;
  * - 过期验证
  */
 public class JwtDemo {
+    // WARNING: 教学演示用，生产环境密钥必须从环境变量或配置中心读取，绝不能硬编码！
     static final String KEY = "ibqy-secret-key-2024";
 
     public static void demo() {

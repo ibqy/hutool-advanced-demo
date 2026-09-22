@@ -24,6 +24,8 @@ import java.util.concurrent.ConcurrentHashMap;
  *
  * <p><b>生产场景</b>：黑名单应使用 Redis SET，支持分布式共享和 TTL 自动过期。
  * 此处用 ConcurrentHashMap 教学，原理一致。</p>
+ *
+ * @author ibqy
  */
 public class JwtRefreshDemo {
 
@@ -36,6 +38,13 @@ public class JwtRefreshDemo {
 
     private final Map<String, Long> blacklist = new ConcurrentHashMap<>();
 
+    /**
+     * 创建 Access Token（短命，用于 API 鉴权）
+     *
+     * @param uid  用户 ID
+     * @param role 用户角色
+     * @return 签名后的 JWT 字符串
+     */
     public String createAccessToken(int uid, String role) {
         return JWT.create()
                 .setPayload("uid", uid)
@@ -47,6 +56,12 @@ public class JwtRefreshDemo {
                 .sign();
     }
 
+    /**
+     * 创建 Refresh Token（长命，用于换取新 Access Token）
+     *
+     * @param uid 用户 ID
+     * @return 签名后的 JWT 字符串
+     */
     public String createRefreshToken(int uid) {
         return JWT.create()
                 .setPayload("uid", uid)
@@ -57,6 +72,12 @@ public class JwtRefreshDemo {
                 .sign();
     }
 
+    /**
+     * 验证 Access Token：先查黑名单，再校验日期和签名
+     *
+     * @param token 待验证的 JWT 字符串
+     * @return true 表示有效，false 表示无效或已过期
+     */
     public boolean validateAccessToken(String token) {
         if (blacklist.containsKey(token)) {
             return false;
@@ -69,6 +90,15 @@ public class JwtRefreshDemo {
         }
     }
 
+    /**
+     * 用 Refresh Token 换取新的 Access Token
+     *
+     * 采用 Token 轮换策略：刷新后旧 Refresh Token 加入黑名单，防止重放攻击。
+     *
+     * @param refreshToken 有效的 Refresh Token
+     * @return 新签发的 Access Token
+     * @throws SecurityException 当 Token 无效、过期或已在黑名单中时抛出
+     */
     public String refreshAccessToken(String refreshToken) {
         if (blacklist.containsKey(refreshToken)) {
             throw new SecurityException("Refresh Token 已失效");
@@ -85,11 +115,18 @@ public class JwtRefreshDemo {
         JWT parsed = JWTUtil.parseToken(refreshToken);
         int uid = ((Number) parsed.getPayload("uid")).intValue();
 
+        // Token 轮换：旧 Refresh Token 用过后立即失效，防止被重放
         blacklist.put(refreshToken, System.currentTimeMillis());
 
         return createAccessToken(uid, "user");
     }
 
+    /**
+     * 同时刷新 Access Token 和 Refresh Token（双 Token 轮换）
+     *
+     * @param oldRefreshToken 旧的 Refresh Token
+     * @return 包含新 accessToken 和新 refreshToken 的 Map
+     */
     public Map<String, String> refreshTokenPair(String oldRefreshToken) {
         String newAccessToken = refreshAccessToken(oldRefreshToken);
         JWT parsed = JWTUtil.parseToken(newAccessToken);
@@ -118,6 +155,9 @@ public class JwtRefreshDemo {
         return cal.getTime();
     }
 
+    /**
+     * JWT 刷新令牌演示入口：展示双 Token 的创建、验证、刷新和轮换机制
+     */
     public static void demo() {
         System.out.println("═══ JWT 刷新令牌 ═══");
 

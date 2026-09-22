@@ -6,13 +6,19 @@ import cn.hutool.core.date.DateUtil;
 import java.lang.reflect.Method;
 
 /**
- * AOP 高级用法
- * - 动态代理
- * - 方法拦截（前置/后置/异常）
- * - 性能监控
+ * AopDemo - 演示 Hutool AOP 面向切面编程能力
+ *
+ * 通过动态代理实现对业务方法的透明拦截，演示前置/后置/异常三种通知类型。
+ * 核心要点：ProxyUtil.proxy() 创建代理，SimpleAspect 定义切面逻辑。
+ * 适用场景：日志记录、性能监控、权限校验等非侵入式增强。
+ *
+ * @author ibqy
  */
 public class AopDemo {
 
+    /**
+     * 业务接口，模拟真实服务层
+     */
     interface BizService {
         String doWork(String input);
         void failTask();
@@ -28,10 +34,16 @@ public class AopDemo {
         }
     }
 
+    /**
+     * AOP 演示入口：创建代理对象并调用业务方法
+     *
+     * 代理对象在方法执行前后自动触发通知，异常时走 afterException 回调。
+     */
     public static void demo() {
         System.out.println("═══ AOP ═══");
 
         // 创建代理：带性能监控 + 日志
+        // 返回 true 表示继续执行目标方法，返回 false 则中断执行
         BizService proxy = ProxyUtil.proxy(new BizServiceImpl(), new SimpleAspect() {
             @Override
             public boolean before(Object target, Method method, Object[] args) {

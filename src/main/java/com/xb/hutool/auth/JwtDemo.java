@@ -7,16 +7,20 @@ import cn.hutool.jwt.signers.JWTSignerUtil;
 import java.util.*;
 
 /**
- * JWT 高级用法
- * - 生成/解析 Token
- * - 自定义 Payload
- * - HS256 / RS256 签名
- * - 过期验证
+ * JwtDemo - 演示 Hutool JWT 令牌的生成、解析、验签与过期校验
+ *
+ * JWT（JSON Web Token）是无状态鉴权的核心方案。本类演示了从创建载荷（Payload）、
+ * HS256 签名到过期验证的完整流程，帮助学习者理解 Token 的生命周期。
+ *
+ * @author ibqy
  */
 public class JwtDemo {
     // WARNING: 教学演示用，生产环境密钥必须从环境变量或配置中心读取，绝不能硬编码！
     static final String KEY = "ibqy-secret-key-2024";
 
+    /**
+     * JWT 演示入口：依次展示 Token 生成、解析、验签、HS256 签名和过期校验
+     */
     public static void demo() {
         System.out.println("═══ JWT ═══");
 
@@ -26,6 +30,7 @@ public class JwtDemo {
             .setPayload("role", "admin")
             .setPayload("name", "ibqy")
             .setIssuedAt(new Date())
+            // 设置 1 小时后过期，生产环境建议通过配置中心管理 TTL
             .setExpiresAt(DateUtil.offsetHour(new Date(), 1))
             .setKey(KEY.getBytes())
             .sign();

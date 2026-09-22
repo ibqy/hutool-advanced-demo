@@ -8,13 +8,18 @@ import cn.hutool.core.io.FileUtil;
 import java.util.*;
 
 /**
- * ExcelUtil 高级用法
- * - 导出（带样式）
- * - 导入
- * - 大数据流式写入
- * - 自定义单元格样式
+ * ExcelDemo - 演示 Hutool ExcelUtil 的读写操作
+ *
+ * Excel 导入导出是企业开发的高频需求。本类演示如何创建带样式的 Excel 文件、
+ * 设置列别名映射、合并标题行以及读取数据，帮助学习者快速上手 POI 的封装层。
+ *
+ * @author ibqy
  */
 public class ExcelDemo {
+
+    /**
+     * Excel 演示入口：写入带样式的 Excel 文件并回读验证
+     */
     public static void demo() {
         System.out.println("═══ ExcelUtil ═══");
 
@@ -25,6 +30,7 @@ public class ExcelDemo {
 
         // 合并标题行
         writer.merge(4, "Hutool 用户列表");
+        // setOnlyAlias(true) 表示只输出设置了别名的列，过滤掉无关字段
         writer.setOnlyAlias(true);
 
         // 设置列别名

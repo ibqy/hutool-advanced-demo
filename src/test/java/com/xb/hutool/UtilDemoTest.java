@@ -12,6 +12,13 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * UtilDemoTest - 工具类综合单元测试
+ *
+ * 覆盖 UUID/NanoId 生成、MD5/AES 加解密、数据脱敏、类型转换、Base64 和空值判断。
+ *
+ * @author ibqy
+ */
 @DisplayName("Hutool 工具类综合测试")
 class UtilDemoTest {
 

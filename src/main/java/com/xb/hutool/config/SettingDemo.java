@@ -5,12 +5,18 @@ import cn.hutool.core.io.FileUtil;
 import java.nio.charset.StandardCharsets;
 
 /**
- * Setting 高级用法
- * - 分组配置
- * - 自动加载
- * - 配置变更监听
+ * SettingDemo - 演示 Hutool Setting 配置文件的读取与操作
+ *
+ * Setting 是 Hutool 提供的轻量级配置管理工具，支持分组配置、类型安全读取和配置持久化。
+ * 本类演示如何动态创建配置文件、按 key/分组读取、遍历所有配置项以及备份配置文件。
+ *
+ * @author ibqy
  */
 public class SettingDemo {
+
+    /**
+     * 配置演示入口：创建示例配置文件并演示读取、遍历、备份操作
+     */
     public static void demo() {
         System.out.println("═══ Setting ═══");
 
@@ -21,6 +27,7 @@ public class SettingDemo {
         FileUtil.writeString(cfg, "/tmp/hutool.setting", StandardCharsets.UTF_8);
 
         // 读取配置
+        // 第二个参数 true 表示开启自动加载，文件变更时自动重新读取
         Setting setting = new Setting("/tmp/hutool.setting", true);
         String url = setting.getStr("db.url");
         int port = setting.getInt("server.port");

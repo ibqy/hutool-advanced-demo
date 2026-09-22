@@ -18,25 +18,56 @@ import java.util.function.Predicate;
  *     <li>链式校验器：收集所有错误而非遇到第一个就中断，适合表单提交场景</li>
  *     <li>自定义规则扩展：Predicate 函数式接口，一行代码添加新规则</li>
  * </ul>
+ *
+ * @author ibqy
  */
 public class ValidatorDemo {
 
+    /**
+     * 校验手机号格式（中国大陆 11 位，1 开头）
+     *
+     * @param value 待校验的字符串
+     * @return 格式合法返回 true
+     */
     public static boolean isPhone(String value) {
         return ReUtil.isMatch("^1[3-9]\\d{9}$", value);
     }
 
+    /**
+     * 校验邮箱格式
+     *
+     * @param value 待校验的字符串
+     * @return 格式合法返回 true
+     */
     public static boolean isEmail(String value) {
         return ReUtil.isMatch("^[\\w.-]+@[\\w.-]+\\.\\w+$", value);
     }
 
+    /**
+     * 校验身份证号格式（18 位，末位支持 X）
+     *
+     * @param value 待校验的字符串
+     * @return 格式合法返回 true
+     */
     public static boolean isIdCard(String value) {
         return ReUtil.isMatch("^\\d{17}[\\dXx]$", value);
     }
 
+    /**
+     * 校验中文姓名格式（2-20 个汉字）
+     *
+     * @param value 待校验的字符串
+     * @return 格式合法返回 true
+     */
     public static boolean isChineseName(String value) {
         return ReUtil.isMatch("^[\\u4e00-\\u9faa]{2,20}$", value);
     }
 
+    /**
+     * 链式校验器 —— 收集所有错误而非遇到第一个就中断
+     *
+     * 适合表单提交场景：一次校验返回所有不合规字段，用户体验更好。
+     */
     public static class Validator {
         private final List<String> errors = new ArrayList<>();
 
@@ -47,6 +78,7 @@ public class ValidatorDemo {
             return this;
         }
 
+        // 空值不触发规则校验，配合 notBlank 使用可区分"未填写"和"格式错误"
         public Validator match(String value, String fieldName, Predicate<String> rule, String errorMsg) {
             if (StrUtil.isNotBlank(value) && !rule.test(value)) {
                 errors.add(fieldName + errorMsg);
@@ -84,10 +116,18 @@ public class ValidatorDemo {
         }
     }
 
+    /**
+     * 创建一个新的链式校验器实例
+     *
+     * @return 空的 Validator 实例，可链式调用
+     */
     public static Validator newValidator() {
         return new Validator();
     }
 
+    /**
+     * 数据校验演示入口：展示静态校验方法和链式校验器
+     */
     public static void demo() {
         System.out.println("═══ 数据校验器 ═══");
 

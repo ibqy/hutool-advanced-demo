@@ -6,17 +6,22 @@ import cn.hutool.core.util.CharsetUtil;
 import java.util.*;
 
 /**
- * HttpUtil 高级用法
- * - 连接池 + 拦截器
- * - 文件上传/下载
- * - 自定义 SSL
- * - RESTful 调用链
+ * HttpUtilDemo - 演示 Hutool HTTP 网络请求的高级用法
+ *
+ * HTTP 调用是微服务和对接第三方 API 的基础。本类演示链式 GET/POST 请求、
+ * 参数拼接、文件下载等常见场景，帮助学习者掌握 Hutool 对 HttpURLConnection 的封装技巧。
+ *
+ * @author ibqy
  */
 public class HttpUtilDemo {
+
+    /**
+     * HTTP 演示入口：展示链式 GET、POST JSON、带参请求和文件下载
+     */
     public static void demo() {
         System.out.println("═══ HttpUtil ═══");
 
-        // 1. 链式 GET（支持超时、header、拦截器）
+        // 1. 链式 GET（必须设置 timeout，否则可能无限阻塞）
         String body = HttpRequest.get("https://api.github.com/zen")
             .timeout(5000)
             .header("User-Agent", "Hutool-Demo")
@@ -24,7 +29,7 @@ public class HttpUtilDemo {
             .body();
         System.out.println("  GET → " + body);
 
-        // 2. POST JSON
+        // 2. POST JSON —— 必须设置 Content-Type，否则服务端可能无法解析
         String postBody = HttpRequest.post("https://httpbin.org/post")
             .body("{\"msg\":\"hello hutool\"}")
             .contentType(ContentType.JSON.getValue())

@@ -23,9 +23,16 @@ import java.util.Map;
  * </ul>
  *
  * <p><b>生产场景</b>：密钥对由 KMS 或证书管理，此处动态生成用于教学。</p>
+ *
+ * @author ibqy
  */
 public class CryptoDemo {
 
+    /**
+     * 生成 RSA 密钥对
+     *
+     * @return 包含 publicKey 和 privateKey 的 Map（Base64 编码）
+     */
     public static Map<String, String> generateKeyPair() {
         RSA rsa = new RSA();
         return Map.of(
@@ -34,27 +41,59 @@ public class CryptoDemo {
         );
     }
 
+    /**
+     * 使用公钥加密数据
+     *
+     * @param publicKey Base64 编码的公钥
+     * @param data      待加密的明文
+     * @return 加密后的字符串
+     */
     public static String encryptByPublic(String publicKey, String data) {
         RSA rsa = new RSA(null, publicKey);
         return rsa.encryptBcd(data, KeyType.PublicKey);
     }
 
+    /**
+     * 使用私钥解密数据
+     *
+     * @param privateKey Base64 编码的私钥
+     * @param encrypted  加密后的字符串
+     * @return 解密后的明文
+     */
     public static String decryptByPrivate(String privateKey, String encrypted) {
         RSA rsa = new RSA(privateKey, null);
         return rsa.decryptStr(encrypted, KeyType.PrivateKey);
     }
 
+    /**
+     * 使用私钥对数据签名（SHA256withRSA）
+     *
+     * @param privateKey Base64 编码的私钥
+     * @param data       待签名数据
+     * @return Base64 编码的签名
+     */
     public static String sign(String privateKey, String data) {
         Sign sign = SecureUtil.sign(SignAlgorithm.SHA256withRSA, privateKey, null);
         return cn.hutool.core.codec.Base64.encode(sign.sign(data.getBytes(StandardCharsets.UTF_8)));
     }
 
+    /**
+     * 使用公钥验证签名
+     *
+     * @param publicKey Base64 编码的公钥
+     * @param data      原始数据
+     * @param signature Base64 编码的签名
+     * @return 验签通过返回 true
+     */
     public static boolean verify(String publicKey, String data, String signature) {
         Sign sign = SecureUtil.sign(SignAlgorithm.SHA256withRSA, null, publicKey);
         return sign.verify(data.getBytes(StandardCharsets.UTF_8),
                 cn.hutool.core.codec.Base64.decode(signature));
     }
 
+    /**
+     * RSA 加密与签名演示入口：展示公钥加密、私钥解密、私钥签名、公钥验签的完整流程
+     */
     public static void demo() {
         System.out.println("═══ RSA 加密 & 签名 ═══");
 

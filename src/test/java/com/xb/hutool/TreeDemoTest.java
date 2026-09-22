@@ -12,6 +12,13 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * TreeDemoTest - 树结构单元测试
+ *
+ * 验证树的构建、节点查找、多层级结构、空列表处理和节点排序。
+ *
+ * @author ibqy
+ */
 @DisplayName("Hutool TreeUtil 树结构测试")
 class TreeDemoTest {
 

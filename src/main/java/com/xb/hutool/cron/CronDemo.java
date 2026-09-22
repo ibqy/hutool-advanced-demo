@@ -6,12 +6,18 @@ import cn.hutool.core.thread.ThreadUtil;
 import cn.hutool.core.date.DateUtil;
 
 /**
- * CronUtil 高级用法
- * - 定时任务
- * - 动态添加/移除
- * - 任务监听
+ * CronDemo - 演示 Hutool CronUtil 定时任务调度
+ *
+ * 定时任务是后台系统的常见需求。本类演示如何用 CronUtil 注册带 Cron 表达式的任务、
+ * 动态启停调度器，帮助学习者理解 Hutool 内置的轻量级调度方案（无需引入 Quartz）。
+ *
+ * @author ibqy
  */
 public class CronDemo {
+
+    /**
+     * 定时任务演示入口：注册两个不同频率的任务并观察输出
+     */
     public static void demo() {
         System.out.println("═══ CronUtil ═══");
 
@@ -24,6 +30,7 @@ public class CronDemo {
             System.out.println("  🔔 job2 (2s) → " + DateUtil.now()));
 
         // 3. 启动（非守护）
+        // 开启秒级匹配，默认只支持分钟级；"* * * * * ?" 表示每秒执行
         CronUtil.setMatchSecond(true);
         CronUtil.start(false);
         System.out.println("  定时任务已启动（3秒后自动停止）");

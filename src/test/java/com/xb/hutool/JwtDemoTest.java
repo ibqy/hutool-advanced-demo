@@ -12,6 +12,13 @@ import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * JwtDemoTest - JWT 令牌单元测试
+ *
+ * 覆盖 Token 生成解析、验签正反面、HS256 签名器和过期校验场景。
+ *
+ * @author ibqy
+ */
 @DisplayName("Hutool JWT 鉴权测试")
 class JwtDemoTest {
 

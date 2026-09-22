@@ -9,6 +9,13 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * CacheDemoTest - 缓存组件单元测试
+ *
+ * 验证 TimedCache 过期机制、FIFOCache 淘汰策略和手动清理行为。
+ *
+ * @author ibqy
+ */
 @DisplayName("Hutool Cache 缓存测试")
 class CacheDemoTest {
 

@@ -10,6 +10,13 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * JwtRefreshDemoTest - JWT 刷新令牌机制单元测试
+ *
+ * 覆盖双 Token 的创建、验证、刷新轮换和黑名单拦截场景。
+ *
+ * @author ibqy
+ */
 @DisplayName("JWT 刷新令牌机制测试")
 class JwtRefreshDemoTest {
 

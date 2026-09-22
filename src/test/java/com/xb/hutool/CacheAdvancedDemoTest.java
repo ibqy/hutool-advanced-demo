@@ -8,6 +8,13 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * CacheAdvancedDemoTest - 缓存高级策略单元测试
+ *
+ * 验证缓存穿透防护（空值缓存）、击穿防护（互斥锁）和雪崩防护（TTL 抖动）。
+ *
+ * @author ibqy
+ */
 @DisplayName("缓存高级策略测试")
 class CacheAdvancedDemoTest {
 

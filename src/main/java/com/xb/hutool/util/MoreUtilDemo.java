@@ -11,14 +11,18 @@ import cn.hutool.crypto.symmetric.AES;
 import java.util.*;
 
 /**
- * 更多 Hutool 高级工具用法
- * - 反射/类型转换
- * - 加密/解密
- * - 唯一 ID
- * - 压缩
- * - 脱敏
+ * MoreUtilDemo - 演示 Hutool 各类工具函数的综合用法
+ *
+ * Hutool 提供了大量开箱即用的工具类。本类集中演示 UUID/NanoId 生成、
+ * MD5/AES 加解密、数据脱敏、类型转换、Map 操作、Base64、日期处理和空值判断等功能。
+ *
+ * @author ibqy
  */
 public class MoreUtilDemo {
+
+    /**
+     * 工具综合演示入口：依次展示 8 类常用工具函数
+     */
     public static void demo() {
         System.out.println("═══ 更多工具 ═══");
 
@@ -32,6 +36,7 @@ public class MoreUtilDemo {
         String md5 = SecureUtil.md5(pwd);
         System.out.println("  MD5 → " + md5);
 
+        // AES 密钥长度必须是 16/24/32 字节，这里截取 UUID 前 16 位
         AES aes = SecureUtil.aes(IdUtil.simpleUUID().substring(0, 16).getBytes());
         String enc = aes.encryptBase64(pwd);
         String dec = aes.decryptStr(enc);

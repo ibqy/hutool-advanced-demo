@@ -8,6 +8,13 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * ValidatorDemoTest - 数据校验器单元测试
+ *
+ * 覆盖静态校验方法（手机号/邮箱/身份证/中文名）和链式校验器的错误收集行为。
+ *
+ * @author ibqy
+ */
 @DisplayName("数据校验器测试")
 class ValidatorDemoTest {
 

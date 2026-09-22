@@ -10,6 +10,13 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * CryptoDemoTest - RSA 加密与签名单元测试
+ *
+ * 覆盖密钥对生成、公钥加密私钥解密、私钥签名公钥验签和篡改检测。
+ *
+ * @author ibqy
+ */
 @DisplayName("RSA 加密 & 签名测试")
 class CryptoDemoTest {
 

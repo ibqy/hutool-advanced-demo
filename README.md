@@ -5,7 +5,7 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/Java-21-2266EE?style=flat-square" alt="Java 21">
-  <img src="https://img.shields.io/badge/Hutool-5.8.34-2266EE?style=flat-square" alt="Hutool 5.8.34">
+  <img src="https://img.shields.io/badge/Hutool-5.8.48-2266EE?style=flat-square" alt="Hutool 5.8.48">
   <img src="https://img.shields.io/github/license/ibqy/hutool-advanced-demo?style=flat-square" alt="License">
   <img src="https://img.shields.io/github/stars/ibqy/hutool-advanced-demo?style=flat-square" alt="Stars">
 </p>
@@ -71,7 +71,7 @@ mvn exec:java -Dexec.mainClass="com.xb.hutool.HutoolAdvancedDemo"
 <dependency>
     <groupId>cn.hutool</groupId>
     <artifactId>hutool-all</artifactId>
-    <version>5.8.34</version>
+    <version>5.8.48</version>
 </dependency>
 ```
 

@@ -1,6 +1,6 @@
 # JWT 鉴权实战
 
-> 对应 Demo：`auth/JwtDemo.java`
+> 对应 Demo：[`auth/JwtDemo.java`](../src/main/java/com/xb/hutool/auth/JwtDemo.java) ｜ 刷新令牌：[`auth/JwtRefreshDemo.java`](../src/main/java/com/xb/hutool/auth/JwtRefreshDemo.java)
 
 ## 概述
 

@@ -4,11 +4,15 @@
 </p>
 
 <p align="center">
+  <a href="https://ibqy.github.io/hutool-advanced-demo/"><img src="https://img.shields.io/badge/在线课件-2F6FEB?style=flat-square" alt="在线课件"></a>
   <img src="https://img.shields.io/badge/Java-21-2266EE?style=flat-square" alt="Java 21">
   <img src="https://img.shields.io/badge/Hutool-5.8.48-2266EE?style=flat-square" alt="Hutool 5.8.48">
   <img src="https://img.shields.io/github/license/ibqy/hutool-advanced-demo?style=flat-square" alt="License">
   <img src="https://img.shields.io/github/stars/ibqy/hutool-advanced-demo?style=flat-square" alt="Stars">
 </p>
+
+> **课程位置** 阶段 0 · 工程地基 — 第 1 站
+> **Hutool 高级用法** → [下一站 MyBatis-Plus](https://ibqy.github.io/mybatis-plus-demo/) ｜ [完整学习路线](https://ibqy.github.io/curriculum) ｜ [在线课件](https://ibqy.github.io/hutool-advanced-demo/)
 
 <br>
 

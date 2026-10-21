@@ -1,6 +1,6 @@
 # AOP 代理与切面
 
-> 对应 Demo：`aop/AopDemo.java`
+> 对应 Demo：[`aop/AopDemo.java`](../src/main/java/com/xb/hutool/aop/AopDemo.java)
 
 ## 概述
 

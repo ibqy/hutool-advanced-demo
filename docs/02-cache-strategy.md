@@ -1,6 +1,6 @@
 # 缓存策略
 
-> 对应 Demo：`cache/CacheDemo.java`
+> 对应 Demo：[`cache/CacheDemo.java`](../src/main/java/com/xb/hutool/cache/CacheDemo.java) ｜ 进阶：[`cache/CacheAdvancedDemo.java`](../src/main/java/com/xb/hutool/cache/CacheAdvancedDemo.java)
 
 ## 概述
 

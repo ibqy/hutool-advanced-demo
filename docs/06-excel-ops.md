@@ -1,6 +1,6 @@
 # Excel 操作
 
-> 对应 Demo：`excel/ExcelDemo.java`
+> 对应 Demo：[`excel/ExcelDemo.java`](../src/main/java/com/xb/hutool/excel/ExcelDemo.java)
 
 ## 概述
 

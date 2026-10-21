@@ -1,6 +1,6 @@
 # 树结构工具
 
-> 对应 Demo：`tree/TreeDemo.java`
+> 对应 Demo：[`tree/TreeDemo.java`](../src/main/java/com/xb/hutool/tree/TreeDemo.java)
 
 ## 概述
 

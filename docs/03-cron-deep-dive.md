@@ -1,6 +1,6 @@
 # 定时任务深入
 
-> 对应 Demo：`cron/CronDemo.java`
+> 对应 Demo：[`cron/CronDemo.java`](../src/main/java/com/xb/hutool/cron/CronDemo.java)
 
 ## 概述
 

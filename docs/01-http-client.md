@@ -1,6 +1,6 @@
 # HTTP 客户端实战
 
-> 对应 Demo：`http/HttpUtilDemo.java`
+> 对应 Demo：[`http/HttpUtilDemo.java`](../src/main/java/com/xb/hutool/http/HttpUtilDemo.java)
 
 ## 概述
 
